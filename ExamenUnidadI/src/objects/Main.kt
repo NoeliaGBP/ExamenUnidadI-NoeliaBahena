@@ -4,7 +4,9 @@ import java.util.*
 
 class Main {
     fun main(args : Array<String>){
-        var sc : Scanner = Scanner(System.`in`);
+        val sc : Scanner = Scanner(System.`in`);
+        var cookingCourses : MutableList<CookingCourse> = mutableListOf()
+        var programingCourse : MutableList<ProgramingCourse> = mutableListOf()
         println("~~~~~~~~~~Sistema de cursos~~~~~~~~~~")
         do {
             println("Menú de opciones")
@@ -13,8 +15,8 @@ class Main {
             println("3 -> Obtener Todos")
             println("4 -> Salir")
             println("Ingrese su opción:")
-            var opcion: Int = sc.nextInt()
-            when (opcion) {
+            var option: Int = sc.nextInt()
+            when (option) {
                 1 -> {
                     println("\nCurso de cocina")
                     do {
@@ -27,7 +29,7 @@ class Main {
                         var opc: Int = sc.nextInt()
                         when (opc) {
                             1 -> {
-
+                                addCookingCourse(sc)
                             }
                             2 -> {
 
@@ -43,6 +45,7 @@ class Main {
                     } while (opc != 5)
                 }
                 2 -> {
+                    println("\nCurso de programación")
                     do {
                         println("1 -> Registrar")
                         println("2 -> Actualizar")
@@ -53,7 +56,7 @@ class Main {
                         var opc: Int = sc.nextInt()
                         when (opc) {
                             1 -> {
-
+                               addProgramingCourse(sc)
                             }
                             2 -> {
 
@@ -74,6 +77,30 @@ class Main {
                 4 -> println("Hasta pronto")
                 else -> println("Opción inválida")
             }
-        }while(opcion!=4)
+        }while(option!=4)
+    }
+
+    fun addProgramingCourse(sc : Scanner){
+        var course = ProgramingCourse();
+        println("Ingresa el nombre del curso: ")
+        course.id = programingCourse.size+1
+        course.name = sc.nextLine()
+        println("Ingresa la descripción del curso: ")
+        course.description = sc.nextLine()
+        programingCourse.add(course)
+    }
+
+    fun addCookingCourse(sc : Scanner){
+        var course = CookingCourse();
+        println("Ingresa el nombre del curso: ")
+        course.id = cookingCourses.size+1
+        course.name = sc.nextLine()
+        println("Ingresa la descripción del curso: ")
+        course.description = sc.nextLine()
+        cookingCourses.add(course)
+    }
+
+    fun updateProgramingCourse(sc : Scanner){
+
     }
 }
