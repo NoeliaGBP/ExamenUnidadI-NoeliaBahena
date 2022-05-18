@@ -117,7 +117,7 @@ fun main(args: Array<String>) {
                         2 -> {
                             println("Ingresa el nombre del curso que desea actualizar")
                             course = main.updateCookingCourse(main.sc.nextLine())
-                            if (course != null) main.cookingCourses.add(course) else println()
+
                         }
                         3 -> {
 
@@ -132,6 +132,7 @@ fun main(args: Array<String>) {
             2 -> {
                 println("\nCurso de programación")
                 do {
+                    var course : ProgramingCourse ? = null
                     println("1 -> Registrar")
                     println("2 -> Actualizar")
                     println("3 -> Eliminar")
@@ -141,12 +142,12 @@ fun main(args: Array<String>) {
                     var opc: Int = main.sc.nextInt()
                     when (opc) {
                         1 -> {
-                            var course = main.addProgramingCourse()
+                            course = main.addProgramingCourse()
                             if (course != null) main.programingCourses.add(course) else println()
                         }
                         2 -> {
                             println("Ingresa el nombre del curso que desea actualizar")
-                            main.updateCookingCourse(main.sc.nextLine())
+                            course = main.updateProgramingCourse(main.sc.nextLine())
                         }
                         3 -> {
 
