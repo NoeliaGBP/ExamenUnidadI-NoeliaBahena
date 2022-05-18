@@ -12,12 +12,12 @@ class Main {
         var name: String
         do {
             println("Ingresa el nombre del curso: ")
-            name = sc.nextLine()
+            name = sc.next()
             var comparison = (getOneprogramingCourse(name) != null)
             if (comparison) println("Ese nombre ya existe")
         } while (comparison)
         println("Ingresa la descripción del curso: ")
-        var description = sc.nextLine()
+        var description = sc.next()
         return ProgramingCourse(id, name, description)
     }
 
@@ -26,12 +26,12 @@ class Main {
         var name: String
         do {
             println("Ingresa el nombre del curso: ")
-            name = sc.nextLine()
+            name = sc.next()
             var comparison = (getOneprogramingCourse(name) != null)
             if (comparison) println("Ese nombre ya existe")
         } while (comparison)
         println("Ingresa la descripción del curso: ")
-        var description = sc.nextLine()
+        var description = sc.next()
         return CookingCourse(id, name, description)
     }
 
@@ -41,12 +41,12 @@ class Main {
             var name: String
             do {
                 println("Ingresa el nuevo nombre del curso: ")
-                name = sc.nextLine()
+                name = sc.next()
                 var comparison = (getOneprogramingCourse(name) != null)
                 if (comparison) println("Ese nombre ya existe")
             } while (comparison)
             println("Ingresa la nueva descripción del curso: ")
-            var description = sc.nextLine()
+            var description = sc.next()
             var course = CookingCourse(course.id, name, description)
         }
         return course
@@ -58,12 +58,12 @@ class Main {
             var name: String
             do {
                 println("Ingresa el nuevo nombre del curso: ")
-                name = sc.nextLine()
+                name = sc.next()
                 var comparison = (getOneprogramingCourse(name) != null)
                 if (comparison) println("Ese nombre ya existe")
             } while (comparison)
             println("Ingresa la nueva descripción del curso: ")
-            var description = sc.nextLine()
+            var description = sc.next()
             course = ProgramingCourse(course.id, name, description)
         }
         return course
@@ -116,7 +116,7 @@ fun main(args: Array<String>) {
                         }
                         2 -> {
                             println("Ingresa el nombre del curso que desea actualizar")
-                            course = main.updateCookingCourse(main.sc.nextLine())
+                            course = main.updateCookingCourse(main.sc.next())
 
                         }
                         3 -> {
@@ -147,7 +147,7 @@ fun main(args: Array<String>) {
                         }
                         2 -> {
                             println("Ingresa el nombre del curso que desea actualizar")
-                            course = main.updateProgramingCourse(main.sc.nextLine())
+                            course = main.updateProgramingCourse(main.sc.next())
                         }
                         3 -> {
 
