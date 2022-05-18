@@ -3,10 +3,10 @@ package objects
 import java.util.*
 
 class Main {
+    private val sc : Scanner = Scanner(System.`in`);
+    private var cookingCourses : MutableList<CookingCourse> = mutableListOf()
+    private var programingCourses : MutableList<ProgramingCourse> = mutableListOf()
     fun main(args : Array<String>){
-        val sc : Scanner = Scanner(System.`in`);
-        var cookingCourses : MutableList<CookingCourse> = mutableListOf()
-        var programingCourse : MutableList<ProgramingCourse> = mutableListOf()
         println("~~~~~~~~~~Sistema de cursos~~~~~~~~~~")
         do {
             println("Menú de opciones")
@@ -29,7 +29,7 @@ class Main {
                         var opc: Int = sc.nextInt()
                         when (opc) {
                             1 -> {
-                                addCookingCourse(sc)
+                                addCookingCourse()
                             }
                             2 -> {
 
@@ -56,7 +56,7 @@ class Main {
                         var opc: Int = sc.nextInt()
                         when (opc) {
                             1 -> {
-                               addProgramingCourse(sc)
+                               addProgramingCourse()
                             }
                             2 -> {
 
@@ -80,23 +80,23 @@ class Main {
         }while(option!=4)
     }
 
-    fun addProgramingCourse(sc : Scanner){
-        var course = ProgramingCourse();
+    fun addProgramingCourse(){
         println("Ingresa el nombre del curso: ")
-        course.id = programingCourse.size+1
-        course.name = sc.nextLine()
+        var id = programingCourses.size+1
+        var name = sc.nextLine()
         println("Ingresa la descripción del curso: ")
-        course.description = sc.nextLine()
-        programingCourse.add(course)
+        var description = sc.nextLine()
+        var course = ProgramingCourse(id, name, description)
+        programingCourses.add(course)
     }
 
-    fun addCookingCourse(sc : Scanner){
-        var course = CookingCourse();
+    fun addCookingCourse(){
         println("Ingresa el nombre del curso: ")
-        course.id = cookingCourses.size+1
-        course.name = sc.nextLine()
+        var id = cookingCourses.size+1
+        var name = sc.nextLine()
         println("Ingresa la descripción del curso: ")
-        course.description = sc.nextLine()
+        var description = sc.nextLine()
+        var course = CookingCourse(id, name, description)
         cookingCourses.add(course)
     }
 
