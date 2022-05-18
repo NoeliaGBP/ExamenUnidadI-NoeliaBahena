@@ -1,5 +1,4 @@
-open class Media(){
-
+open class CompanionObject(){
     //Mensajes (error, succes, info)
     companion object{
 
@@ -26,5 +25,4 @@ open class Media(){
         private const val MENSJE_INFO_GET = "Es posible que el elemento no haya sido consultado."
 
     }
-
 }

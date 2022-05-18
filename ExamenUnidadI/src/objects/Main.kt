@@ -6,14 +6,15 @@ class Main {
     val sc: Scanner = Scanner(System.`in`);
     var cookingCourses: MutableList<CookingCourse> = mutableListOf()
     var programingCourses: MutableList<ProgramingCourse> = mutableListOf()
-
+    val companionObj: CompanionObject = CompanionObject()
     fun addProgramingCourse(): ProgramingCourse {
         var id = programingCourses.size + 1
         var name: String
+        sc.nextLine()
         do {
             println("Ingresa el nombre del curso: ")
-            name = sc.next()
-            var comparison = (getOneprogramingCourse(name) != null)
+            name = sc.nextLine()
+            var comparison: Boolean = (getOneprogramingCourse(name) != null)
             if (comparison) println("Ese nombre ya existe")
         } while (comparison)
         println("Ingresa la descripción del curso: ")
@@ -24,10 +25,11 @@ class Main {
     fun addCookingCourse(): CookingCourse {
         var id = cookingCourses.size + 1
         var name: String
+        sc.nextLine()
         do {
             println("Ingresa el nombre del curso: ")
-            name = sc.next()
-            var comparison = (getOneprogramingCourse(name) != null)
+            name = sc.nextLine()
+            var comparison : Boolean = (getOneCookingCourse(name) != null)
             if (comparison) println("Ese nombre ya existe")
         } while (comparison)
         println("Ingresa la descripción del curso: ")
@@ -39,15 +41,16 @@ class Main {
         var course = getOneCookingCourse(nameSearch)
         if (course != null) {
             var name: String
+            sc.nextLine()
             do {
                 println("Ingresa el nuevo nombre del curso: ")
-                name = sc.next()
-                var comparison = (getOneprogramingCourse(name) != null)
+                name = sc.nextLine()
+                var comparison = (getOneCookingCourse(name) != null)
                 if (comparison) println("Ese nombre ya existe")
             } while (comparison)
             println("Ingresa la nueva descripción del curso: ")
             var description = sc.next()
-            var course = CookingCourse(course.id, name, description)
+            course = CookingCourse(course.id, name, description)
         }
         return course
     }
@@ -56,9 +59,10 @@ class Main {
         var course = getOneprogramingCourse(nameSearch)
         if (course != null) {
             var name: String
+            sc.nextLine()
             do {
                 println("Ingresa el nuevo nombre del curso: ")
-                name = sc.next()
+                name = sc.nextLine()
                 var comparison = (getOneprogramingCourse(name) != null)
                 if (comparison) println("Ese nombre ya existe")
             } while (comparison)
@@ -79,7 +83,7 @@ class Main {
 
     fun getOneprogramingCourse(nameSearch: String): ProgramingCourse? {
         for (programingCourse in programingCourses) {
-            if (programingCourse.name.equals(nameSearch))
+            if (programingCourse.name == nameSearch)
                 return programingCourse
         }
         return null
@@ -101,7 +105,7 @@ fun main(args: Array<String>) {
             1 -> {
                 println("\nCurso de cocina")
                 do {
-                    var course : CookingCourse? = null
+                    var course: CookingCourse? = null
                     println("1 -> Registrar")
                     println("2 -> Actualizar")
                     println("3 -> Eliminar")
@@ -112,7 +116,7 @@ fun main(args: Array<String>) {
                     when (opc) {
                         1 -> {
                             course = main.addCookingCourse()
-                            if (course != null) main.cookingCourses.add(course) else println()
+                            if (course != null) main.cookingCourses.add(course) else println(main.companionObj)
                         }
                         2 -> {
                             println("Ingresa el nombre del curso que desea actualizar")
@@ -132,7 +136,7 @@ fun main(args: Array<String>) {
             2 -> {
                 println("\nCurso de programación")
                 do {
-                    var course : ProgramingCourse ? = null
+                    var course: ProgramingCourse? = null
                     println("1 -> Registrar")
                     println("2 -> Actualizar")
                     println("3 -> Eliminar")
