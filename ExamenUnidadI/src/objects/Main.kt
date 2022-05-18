@@ -8,45 +8,65 @@ class Main {
     var programingCourses: MutableList<ProgramingCourse> = mutableListOf()
 
     fun addProgramingCourse(): ProgramingCourse {
-        println("Ingresa el nombre del curso: ")
         var id = programingCourses.size + 1
-        var name = sc.nextLine()
+        var name: String
+        do {
+            println("Ingresa el nombre del curso: ")
+            name = sc.nextLine()
+            var comparison = (getOneprogramingCourse(name) != null)
+            if (comparison) println("Ese nombre ya existe")
+        } while (comparison)
         println("Ingresa la descripción del curso: ")
         var description = sc.nextLine()
-        var course = ProgramingCourse(id, name, description)
-        return course
+        return ProgramingCourse(id, name, description)
     }
 
     fun addCookingCourse(): CookingCourse {
-        println("Ingresa el nombre del curso: ")
         var id = cookingCourses.size + 1
-        var name = sc.nextLine()
+        var name: String
+        do {
+            println("Ingresa el nombre del curso: ")
+            name = sc.nextLine()
+            var comparison = (getOneprogramingCourse(name) != null)
+            if (comparison) println("Ese nombre ya existe")
+        } while (comparison)
         println("Ingresa la descripción del curso: ")
         var description = sc.nextLine()
-        var course = CookingCourse(id, name, description)
-        return course
+        return CookingCourse(id, name, description)
     }
 
-    fun updateCookingCourse(nameSearch: String) {
+    fun updateCookingCourse(nameSearch: String): CookingCourse? {
         var course = getOneCookingCourse(nameSearch)
         if (course != null) {
-            println("Ingresa el nuevo nombre del curso: ")
-            var name = sc.nextLine()
+            var name: String
+            do {
+                println("Ingresa el nuevo nombre del curso: ")
+                name = sc.nextLine()
+                var comparison = (getOneprogramingCourse(name) != null)
+                if (comparison) println("Ese nombre ya existe")
+            } while (comparison)
             println("Ingresa la nueva descripción del curso: ")
             var description = sc.nextLine()
             var course = CookingCourse(course.id, name, description)
         }
+        return course
     }
 
-    fun updateProgramingCourse(nameSearch: String) {
+    fun updateProgramingCourse(nameSearch: String): ProgramingCourse? {
         var course = getOneprogramingCourse(nameSearch)
         if (course != null) {
-            println("Ingresa el nuevo nombre del curso: ")
-            var name = sc.nextLine()
+            var name: String
+            do {
+                println("Ingresa el nuevo nombre del curso: ")
+                name = sc.nextLine()
+                var comparison = (getOneprogramingCourse(name) != null)
+                if (comparison) println("Ese nombre ya existe")
+            } while (comparison)
             println("Ingresa la nueva descripción del curso: ")
             var description = sc.nextLine()
             course = ProgramingCourse(course.id, name, description)
         }
+        return course
     }
 
     fun getOneCookingCourse(nameSearch: String): CookingCourse? {
@@ -81,6 +101,7 @@ fun main(args: Array<String>) {
             1 -> {
                 println("\nCurso de cocina")
                 do {
+                    var course : CookingCourse? = null
                     println("1 -> Registrar")
                     println("2 -> Actualizar")
                     println("3 -> Eliminar")
@@ -90,12 +111,13 @@ fun main(args: Array<String>) {
                     var opc: Int = main.sc.nextInt()
                     when (opc) {
                         1 -> {
-                            var course = main.addCookingCourse()
+                            course = main.addCookingCourse()
                             if (course != null) main.cookingCourses.add(course) else println()
                         }
                         2 -> {
                             println("Ingresa el nombre del curso que desea actualizar")
-                            main.updateProgramingCourse(main.sc.nextLine())
+                            course = main.updateCookingCourse(main.sc.nextLine())
+                            if (course != null) main.cookingCourses.add(course) else println()
                         }
                         3 -> {
 
